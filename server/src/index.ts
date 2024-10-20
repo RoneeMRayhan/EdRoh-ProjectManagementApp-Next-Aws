@@ -5,7 +5,8 @@ import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
 // import router from "./routes.projectRoutes";
-import projectRoutes from "./routes.projectRoutes";
+import projectRoutes from "./routes/projectRoutes";
+import taskRoutes from "./routes/taskRoutes";
 /* ROUTE IMPORTS */
 
 /* CONFIGURATIONS */
@@ -26,6 +27,7 @@ app.get("/", (req, res) => {
 
 // app.use("/projects", router);
 app.use("/projects", projectRoutes);
+app.use("/tasks", taskRoutes);
 
 /* SERVER */
 const port = process.env.PORT || 3013;
