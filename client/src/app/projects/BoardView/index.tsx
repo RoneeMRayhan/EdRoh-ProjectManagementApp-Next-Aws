@@ -90,6 +90,12 @@ const TaskColumn = ({
           <h3 className="flex items-center text-lg font-semibold dark:text-white">
             {status}{" "}
           </h3>
+          <span
+            className="dark:bg-dark-tertiary ml-2 inline-block rounded-full bg-gray-200 p-1 text-center text-sm leading-none"
+            style={{ width: "1.5rem", height: "1.5rem" }}
+          >
+            {tasksCount}
+          </span>
         </div>
       </div>
     </div>
