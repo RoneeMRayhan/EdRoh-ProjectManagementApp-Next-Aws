@@ -114,5 +114,5 @@ export const {
   useCreateProjectMutation,
   useGetTasksQuery,
   useCreateTaskMutation,
-  // useUpdateTaskStatusMutation,
+  useUpdateTaskStatusMutation,
 } = api;
