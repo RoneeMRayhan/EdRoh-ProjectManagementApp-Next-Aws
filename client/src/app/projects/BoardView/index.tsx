@@ -3,6 +3,7 @@ import React from "react";
 import { DndProvider, useDrop } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { Task as TaskType } from "@/state/api";
+import { EllipsisVertical } from "lucide-react";
 
 type BoardProps = {
   id: string;
@@ -89,13 +90,18 @@ const TaskColumn = ({
         <div className="dark:bg-dark-secondary flex w-full items-center justify-between rounded-e-lg bg-white px-5 py-4">
           <h3 className="flex items-center text-lg font-semibold dark:text-white">
             {status}{" "}
+            <span
+              className="dark:bg-dark-tertiary ml-2 inline-block rounded-full bg-gray-200 p-1 text-center text-sm leading-none"
+              style={{ width: "1.5rem", height: "1.5rem" }}
+            >
+              {tasksCount}
+            </span>
           </h3>
-          <span
-            className="dark:bg-dark-tertiary ml-2 inline-block rounded-full bg-gray-200 p-1 text-center text-sm leading-none"
-            style={{ width: "1.5rem", height: "1.5rem" }}
-          >
-            {tasksCount}
-          </span>
+          <div className="flex items-center gap-1">
+            <button className="flex h-6 w-5 items-center justify-center dark:text-neutral-500">
+              <EllipsisVertical size={26} />
+            </button>
+          </div>
         </div>
       </div>
     </div>
