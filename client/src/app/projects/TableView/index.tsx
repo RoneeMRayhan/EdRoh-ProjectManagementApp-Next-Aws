@@ -55,13 +55,13 @@ const columns: GridColDef[] = [
     field: "author",
     headerName: "Author",
     width: 150,
-    renderCell: (params) => params.value.username || "Unknown",
+    renderCell: (params) => params?.value?.username || "Unknown",
   },
   {
     field: "assignee",
     headerName: "Assignee",
     width: 150,
-    renderCell: (params) => params.value.username || "Unassigned",
+    renderCell: (params) => params?.value?.username || "Unassigned",
   },
 ];
 
@@ -83,7 +83,7 @@ const TableView = ({ id, setIsModalNewTaskOpen }: Props) => {
           name="Table"
           buttonComponent={
             <button
-              className="flex items-center bg-blue-primary px-3 py-2 text-white hover:bg-blue-600"
+              className="flex items-center rounded bg-blue-primary px-3 py-2 text-white hover:bg-blue-600"
               onClick={() => setIsModalNewTaskOpen(true)}
             >
               Add Task
