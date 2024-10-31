@@ -4,9 +4,22 @@ import { useGetUsersQuery } from "@/state/api";
 import React from "react";
 import { useAppSelector } from "../redux";
 import Header from "@/components/Header";
-import { DataGrid, GridColDef } from "@mui/x-data-grid";
+import {
+  DataGrid,
+  GridColDef,
+  GridToolbarContainer,
+  GridToolbarExport,
+  GridToolbarFilterButton,
+} from "@mui/x-data-grid";
 import Image from "next/image";
 import { dataGridClassNames, dataGridSxStyles } from "@/lib/utils";
+
+const CustomToolbar = () => (
+  <GridToolbarContainer className="toolbar flex gap-2">
+    <GridToolbarFilterButton />
+    <GridToolbarExport />
+  </GridToolbarContainer>
+);
 
 const columns: GridColDef[] = [
   { field: "userId", headerName: "ID", width: 100 },
@@ -47,6 +60,9 @@ const Users = () => {
           columns={columns}
           getRowId={(row) => row.userId}
           pagination
+          slots={{
+            toolbar: CustomToolbar,
+          }}
           className={dataGridClassNames}
           sx={dataGridSxStyles(isDarkMode)}
         />
