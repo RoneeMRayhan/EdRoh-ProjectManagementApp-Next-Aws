@@ -9,18 +9,22 @@ import {
   useGetTasksQuery,
 } from "@/state/api";
 import { useAppSelector } from "../redux";
-import { GridColDef } from "@mui/x-data-grid";
+import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import {
   Bar,
   BarChart,
   CartesianGrid,
+  Cell,
   Legend,
+  Pie,
+  PieChart,
   ResponsiveContainer,
   Tooltip,
   XAxis,
   YAxis,
 } from "recharts";
 import Header from "@/components/Header";
+import { dataGridClassNames, dataGridSxStyles } from "@/lib/utils";
 
 const taskColumns: GridColDef[] = [
   { field: "titles", headerName: "Title", width: 200 },
@@ -113,6 +117,42 @@ const HomePage = () => {
               <Bar dataKey="count" fill={chartColors.bar} />
             </BarChart>
           </ResponsiveContainer>
+        </div>
+        <div className="rounded-lg bg-white p-4 shadow dark:bg-dark-secondary">
+          <h3 className="mb-4 text-lg font-semibold dark:text-white">
+            Project Status
+          </h3>
+          <ResponsiveContainer width="100%" height={300}>
+            <PieChart>
+              <Pie dataKey="count" data={projectStatus} fill="#82ca9d" label>
+                {projectStatus.map((entry, index) => (
+                  <Cell
+                    key={`cell-${index}`}
+                    fill={COLORS[index % COLORS.length]}
+                  />
+                ))}
+              </Pie>
+              <Tooltip />
+              <Legend />
+            </PieChart>
+          </ResponsiveContainer>
+        </div>
+        <div className="rounded-lg bg-white p-4 shadow dark:bg-dark-secondary md:col-span-2">
+          <h3 className="mb-4 text-lg font-semibold dark:text-white">
+            Your Tasks
+          </h3>
+          <div style={{ height: 400, width: "100%" }}>
+            <DataGrid
+              rows={tasks}
+              columns={taskColumns}
+              checkboxSelection
+              loading={taskLoading}
+              getRowClassName={() => "data-grid-row"}
+              getCellClassName={() => "data-grid-cell"}
+              className={dataGridClassNames}
+              sx={dataGridSxStyles(isDarkMode)}
+            />
+          </div>
         </div>
       </div>
     </div>
