@@ -5,7 +5,7 @@ import { Priority } from "@/state/api";
 type Props = {};
 
 const Urgent = (props: Props) => {
-  return <ReusablePriorityPage priority={Priority.Urgent} />;
+  return <ReusablePriorityPage priority={Priority.Medium} />;
 };
 
 export default Urgent;
