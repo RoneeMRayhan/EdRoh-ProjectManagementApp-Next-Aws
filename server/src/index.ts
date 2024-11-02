@@ -36,7 +36,7 @@ app.use("/users", userRoutes);
 app.use("/teams", teamRoutes);
 
 /* SERVER */
-const port = Number(process.env.PORT || 3013);
-app.listen(port, "0.0.0.0", () => {
+const port = Number(process.env.PORT || 3013);//ts issue
+app.listen(port, "0.0.0.0", () => {//ec2 aws
   console.log(`Serving on port ${port}`);
 });
