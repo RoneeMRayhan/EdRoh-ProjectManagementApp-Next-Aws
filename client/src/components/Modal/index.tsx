@@ -6,7 +6,7 @@ import { X } from "lucide-react";
 type Props = {
   children: React.ReactNode;
   isOpen: boolean;
-  onclose: () => void;
+  onClose: () => void;
   name: string;
 };
 
@@ -14,7 +14,7 @@ const Modal = ({ children, isOpen, onClose, name }: Props) => {
   if (!isOpen) return null;
 
   return ReactDOM.createPortal(
-    <div className="fixed inset-0 flex h-full w-full items-center justify-center overflow-y-auto bg-gray-600 bg-opacity-50 p-4">
+    <div className="fixed inset-0 z-50 flex h-full w-full items-center justify-center overflow-y-auto bg-gray-600 bg-opacity-50 p-4">
       <div className="p4 w-full max-w-2xl rounded-lg bg-white shadow-lg dark:bg-dark-secondary">
         <Header
           name={name}
