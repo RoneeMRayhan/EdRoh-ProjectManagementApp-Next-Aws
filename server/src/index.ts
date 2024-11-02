@@ -37,6 +37,6 @@ app.use("/teams", teamRoutes);
 
 /* SERVER */
 const port = Number(process.env.PORT || 3013);//ts issue
-app.listen(port, "0.0.0.0", () => {//ec2 aws
+app.listen(port, "0.0.0.0", () => {//ec2 aws "0.0.0.0"
   console.log(`Serving on port ${port}`);
 });
